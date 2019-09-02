@@ -27,41 +27,35 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, foreign_key: true|
-|name|text|null: false, foreign_key: true|
-|e-mail|integer|null: false, foreign_key: true|
-|password|integer|null: false, foreign_key: true|
-|group_user_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
+|e-mail|integer|null: false|
+|password|integer|null: false|
 
 ### Association
-- belongs_to :group
-- belongs_to :user
-- has_many :masseges
+- belongs_to :groups
+- has_many :messages
 - has_many :images
+- add_index :users, name
 
 
-
-## group_usersテーブル
+## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
-|group_name|text|null: false, foreign_key: true|
+|user_id|integer|null: false|
+|group_name|string|null: false|
 
 ### Association
-- belongs_to :group
 - belongs_to :user
 
 
-## massegesテーブル
+## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
-|image|text|null: false, foreign_key: true|
-|group_user_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false|
+|image|text|null: false|
+|group_user_id|integer|null: false|
 
 ### Association
 - has_many :images
@@ -71,10 +65,9 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
-|message|text|null: false, foreign_key: true|
-|group_user_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false|
+|message|text|null: false|
+|group_user_id|integer|null: false|
 
 ### Association
-- has_many :masseges
+- has_many :messages
