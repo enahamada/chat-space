@@ -54,20 +54,11 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
+|message|text|null: false|
 |image|text|null: false|
 |group_user_id|integer|null: false|
 
-### Association
-- has_many :images
-
-
-## imagesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false|
-|message|text|null: false|
-|group_user_id|integer|null: false|
 
 ### Association
-- has_many :messages
+- belongs_to :user
+
