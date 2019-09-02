@@ -34,7 +34,7 @@ Things you may want to cover:
 ### Association
 - has_many :groups through: :group_users
 - has_many :group_users
-- has_many :massages
+- has_many :messages
 - add_index :users, name
 
 
@@ -42,12 +42,11 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
-|group_name|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :users, through: :group_users
-- has_many :through: :group_users
+- has_many :group_users
 - has_many :messages
 
 ## messagesテーブル
@@ -55,9 +54,9 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
-|message|text|null: false|
-|image|text|null: false|
-|group_user_id|integer|null: false|
+|message|text||
+|image|text||
+|group_id|integer|null: false|
 
 
 ### Association
