@@ -32,9 +32,9 @@ Things you may want to cover:
 |password|integer|null: false|
 
 ### Association
-- belongs_to :groups
-- has_many :messages
-- has_many :images
+- has_many :groups through: :group_users
+- has_many :group_users
+- has_many :massages
 - add_index :users, name
 
 
@@ -46,8 +46,9 @@ Things you may want to cover:
 |group_name|string|null: false|
 
 ### Association
-- belongs_to :user
-
+- has_many :users, through: :group_users
+- has_many :through: :group_users
+- has_many :messages
 
 ## messagesテーブル
 
@@ -61,4 +62,16 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
+- belongs_qo :group
 
+
+## group_userテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false|
+|group_id|integer|null: false|
+
+### Association
+- belongs_to :group
+- belongs_to :user
