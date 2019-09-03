@@ -24,6 +24,7 @@ Things you may want to cover:
 * ...
 
 ## usersテーブル
+<<<<<<< Updated upstream
 
 |Column|Type|Options|
 |------|----|-------|
@@ -74,3 +75,56 @@ Things you may want to cover:
 ### Association
 - belongs_to :group
 - belongs_to :user
+=======
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false, foreign_key: true|
+|name|text|null: false, foreign_key: true|
+|e-mail|integer|null: false, foreign_key: true|
+|password|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :group_users
+- belongs_to :user
+- has_many :massages
+- has_many :images
+
+
+## messegeテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false, foreign_key: true|
+|messege|text|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|group_user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :group_users
+- has_many :images
+
+
+## imageテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false, foreign_key: true|
+|image|text|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|group_user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :group_users
+- has_many :masseges
+
+
+## group_usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false, foreign_key: true|
+|group_name|text|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|group_user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :group_users
+- belongs_to :user
+- has_many :massages
+- has_many :images
+>>>>>>> Stashed changes
