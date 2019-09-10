@@ -1,5 +1,9 @@
 $(function() {
   function buildHTML(message){
+    var img ="";
+    if (message.image){
+    var img = `<img src = ${message.image} class: "lower-message_image">`
+    }
     var html = `<div class="message">
               <div class="upper-message">
                 <div class="upper-message__user-name">
