@@ -17,7 +17,9 @@ $(function() {
             </div>`;
   return html;
   }
-
+  function scroll() {
+    $('.messages').animate({scrollTop: $('.message')[0].scrollHeight});
+  }
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
@@ -36,6 +38,11 @@ $(function() {
 　　   $('.messages').append(html);
 　　   $('.form__message').val('');
 　　   $('.form__submit').prop('disabled', false);
-　　　})
- })
+      scroll()
+   })
+   .fail(function(){
+     alert('error')
+     $('.form__submit').prop('disabled', false);
+   })
+})
 });
