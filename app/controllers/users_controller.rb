@@ -10,6 +10,13 @@ class UsersController < ApplicationController
         render :edit
       end
     end
+
+    def search
+      @products = Product.where
+      respond_to do |format|
+        format.html
+        format.json
+    end
   
     private
   
