@@ -12,6 +12,7 @@ $(function () {
                 </a>
                 </div>`
         user_list.append(html); 
+        return html;
     }
 
     function appendMembers(name, user_id) {
@@ -26,7 +27,7 @@ $(function () {
     $(function () {
         $(".chat-group-form__input").on("keyup", function () {
             var input = $("#user-search-field").val();
-            console.log(input);
+            
             $.ajax({
                 type: 'GET',
                 url: '/users',
@@ -38,7 +39,10 @@ $(function () {
                 if (members.length !== 0) {
                     members.forEach(function (user) {
                         appendUsers(user);
-                    })
+                    });
+                }
+                else {
+                  appendNoUsers("一致するユーザーはいません");
                 }
             })
             .fail(function () {

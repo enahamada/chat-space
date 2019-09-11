@@ -5,16 +5,14 @@
   .chat
     .header
       .left-header
-        .left-header__title
-          グループ名
-        %ul.left-header__members
-          Member：
-          %li.member
-            メンバー名
-          %li.member
-            メンバー名
-          %li.member
-            メンバー名
+        .left-header__titl
+          = @group.name
+          %ul.left-header__members
+            Member：
+            %li.left-header__member
+            - @group.users.each do |user|
+              = user.name
+
       .right-header
         .right-header__button
           = link_to edit_group_path(@group) do
@@ -22,7 +20,7 @@
 
     .messages
       = render @messages
-      
+
     .form
       = form_for [@group, @message], id: "new_message" do |f|
         = f.text_field :content, class: "form__message"
