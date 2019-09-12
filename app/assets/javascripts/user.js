@@ -32,8 +32,6 @@ $(document).on('turbolinks:load', function() {
     }
   
     $("#user-search-field").on("keyup", function() {
-      console.log("vvv");
-      
       var input = $("#user-search-field").val();
       if (input == ""){
         $("#user-search-result").empty();
