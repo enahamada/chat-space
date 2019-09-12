@@ -19,12 +19,13 @@ class UsersController < ApplicationController
       end
     end
 
-    # def search
-    #   @products = Product.where
-    #   respond_to do |format|
-    #     format.html
-    #     format.json
-    # end
+    def search
+      @users = User.where('name LIKE(?)', "%#{params[:keyword]}%")
+      respond_to do |format|
+        format.html
+        format.json
+      end
+    end
   
     private
   
