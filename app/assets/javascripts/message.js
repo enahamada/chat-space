@@ -1,14 +1,14 @@
 $(document).on('turbolinks:load', function(){
 
   function buildHTML(message){
-    var img = message.image ? `<img src=${ message.image }>` : "";
+    var img = message.image.url ? `<img src=${ message.image.url }>` : "";
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user">
                       ${ message.user_name }
                     </div>
                     <div class="upper-message__date">
-                      ${ message.created_at }
+                      ${ message.updated_at }
                     </div>
                   </div>
                   <div class="lower-message">
@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function(){
     return html;
   }
   function scroll() {
-    $('.messages').animate({scrollTop: $('.message')[0].scrollHeight});
+    $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
   }
   
   $('#new_message').on('submit', function(e) {
@@ -38,10 +38,14 @@ $(document).on('turbolinks:load', function(){
     })
     
     .done(function(data){
+
 　　   var html = buildHTML(data);
 　　   $('.messages').append(html);
-　　   $('.form__message').reset();
 　　   $('.form__submit').prop('disabled', false);
+      //$('#new-message')[0].reset();
+      //$('#new-message')[0].reset();
+      // $('.form__message').val("");
+      $("#new_message").get(0).reset()
       scroll()
    })
    .fail(function(){
@@ -57,18 +61,18 @@ $(document).on('turbolinks:load', function(){
       // var group_id = $(".group").data("group-id");
     $.ajax({
       //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
-      url: "api/messages",
+      url: "/groups/${group.id}/api/messages",
       //ルーティングで設定した通りhttpメソッドをgetに指定
       type: 'get',
       dataType: 'json',
       //dataオプションでリクエストに値を含める
-      data: {id: last_message_id}
+      data: {last_id: last_message_id}
     })
     .done(function(messages) {
       var insertHTML = '';
       messages.forEach(function(message){
         insertHTML = buildHTML(message);
-        $('#messages').append(insertHTML);
+        $('.messages').append(insertHTML);
         scroll();
       })
     .fail(function() {
