@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function(){
 
   function buildHTML(message){
-    var img = message.image ? `<img class= "lower-message__image" src=${ message.image }>` : "";
+    var img = message.image ? `<img src=${ message.image }>` : "";
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user">
@@ -69,9 +69,8 @@ $(document).on('turbolinks:load', function(){
       messages.forEach(function(message){
         insertHTML = buildHTML(message);
         $('#messages').append(insertHTML);
+        scroll();
       })
-      $('.main-hesader').animate({scrollTop: $('.main-header')[0].scrollHeight}, 'fast');
-    })
     .fail(function() {
       alert('error');
     });
