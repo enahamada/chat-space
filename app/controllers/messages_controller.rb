@@ -4,6 +4,10 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @messages = @group.messages.includes(:user)
+      respond_to do |format|
+        format.html
+        format.json
+      end
   end
 
   def create
@@ -13,7 +17,7 @@ class MessagesController < ApplicationController
       respond_to do |format|
         format.html {redirect_to group_messages_path(@group), notice: "メッセージが送信されました"}
         # { redirect_to messages_path(params[:message_id])  }
-        format.json
+        format.json 
       end
     else
       @messages = @group.messages.includes(:user)
