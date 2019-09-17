@@ -20,3 +20,4 @@ public/uploads/*
 *.[ao]
 t/
 !*.t
+config/secrets.yml
